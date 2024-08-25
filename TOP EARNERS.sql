@@ -24,12 +24,12 @@
 --so, "for all employees" means that a calculation is done where the operation is operated on each colums row matrix.
 --here there are two columns.  the salary and the months worked.
 
-SELECT (months * salary),  COUNT(employee_id )
-FROM employee
-	WHERE employee_id IN
-	(
-	SELECT employee_id
-	FROM employee
+--SELECT (months * salary),  COUNT(employee_id )
+--FROM employee
+--	WHERE employee_id IN
+--	(
+--	SELECT employee_id
+--	FROM employee
 
 
 --yeah the output to the previous query is bugging me out.
@@ -49,9 +49,9 @@ FROM employee
 
 --ok, so boolean type is only for WHERE
 
-SELECT (months * salary),  employee_id
-FROM employee
-WHERE employee_id,
+--SELECT (months * salary),  employee_id
+--FROM employee
+--WHERE employee_id,
 
 
 --Generally speaking, this is a really confusing problem.
@@ -84,3 +84,32 @@ WHERE employee_id,
 --I must write a query to solve this one first.
 
 --I will test that.
+
+USE top_earners;
+SELECT name, months * salary AS max_total_earnings
+	FROM employee;
+--It has been amazing getting the current result set.
+
+--Ok, now.  What else does the question want?
+
+--Now, I am looking for 
+--"as well as the total number of employees 
+--who have maximum total earnings."
+
+--I believe I am burnt out.
+--so, what else can I do?
+
+--let me slowly scope out the next part of the problem.
+--yeah, my brain is toast.
+
+--How can I approach "the total number"  using max function?
+
+USE top_earners;
+SELECT COUNT(total_number_employees_who_have_max_total_earnings), months * salary AS max_total_earnings
+	FROM employee
+	WHERE total_number_employees_who_have_max_total_earnings =
+		(max(salary));
+
+--ok, my initial attempt has failed miserably.
+--I loved the idea of crafting a subquery but I failed misserably.
+--I will love coming back to this with a fresh mind.
