@@ -86,7 +86,7 @@
 --I will test that.
 
 USE top_earners;
-SELECT name, months * salary AS max_total_earnings
+SELECT name, months * salary AS total_earnings
 	FROM employee;
 --It has been amazing getting the current result set.
 
@@ -104,12 +104,47 @@ SELECT name, months * salary AS max_total_earnings
 
 --How can I approach "the total number"  using max function?
 
-USE top_earners;
-SELECT COUNT(total_number_employees_who_have_max_total_earnings), months * salary AS max_total_earnings
-	FROM employee
-	WHERE total_number_employees_who_have_max_total_earnings =
-		(max(salary));
+--USE top_earners;
+--SELECT COUNT(total_number_employees_who_have_max_total_earnings), months * salary AS max_total_earnings
+	--FROM employee
+	--WHERE total_number_employees_who_have_max_total_earnings =
+	--	(max(salary));
 
 --ok, my initial attempt has failed miserably.
 --I loved the idea of crafting a subquery but I failed misserably.
 --I will love coming back to this with a fresh mind.
+
+--08 27 2024
+--I am officially going to be dating these lines.
+
+--I think may have skipped a step last time.
+--I may have gone to number of employees
+
+--when what I need to start with is, maximum total earnings.
+
+--what is the definition for that?
+--"maximum total earnings is the maximum total earning for any employee in the employee table"
+
+--again, horrible.
+
+--so the key is "for any employee" ... "in the employee table."
+
+--so, do I need to just run the MAX function what.  the Select line.
+
+USE top_earners;
+SELECT name, MAX(total_earnings)
+	FROM employee
+	WHERE total_earnings =
+	(SELECT months * salary AS total_earnings
+	FROM employee);
+
+	--I will need to look at aggregators again.
+	--I am sad that I couldn't make more progress.
+	--But I think anything is progress at this point.
+
+	--Thursday, I will look at column naming, using, calling
+	--I keep getting error about "Invalid column name 'total_earnings'"
+
+	--there must be something.
+
+	--I am definitely excited to build upon this.
