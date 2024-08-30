@@ -131,12 +131,12 @@ SELECT name, months * salary AS total_earnings
 
 --so, do I need to just run the MAX function what.  the Select line.
 
-USE top_earners;
-SELECT name, MAX(total_earnings)
-	FROM employee
-	WHERE total_earnings =
-	(SELECT months * salary AS total_earnings
-	FROM employee);
+--USE top_earners;
+--SELECT name, MAX(total_earnings)
+--	FROM employee
+--	WHERE total_earnings =
+--(SELECT months * salary AS total_earnings
+--	FROM employee);
 
 	--I will need to look at aggregators again.
 	--I am sad that I couldn't make more progress.
@@ -148,3 +148,54 @@ SELECT name, MAX(total_earnings)
 	--there must be something.
 
 	--I am definitely excited to build upon this.
+
+--08 29 2024
+
+--ok,
+--I am going to attampt at solving the second part of the problem.
+--but I am now breaking the problem down into three parts.
+
+	--part 1. total_earnings column.
+	--part 2. maximum total earnings
+
+--actually, I need to ammend the above.
+
+	--part 2. maximum total earning for all employees.
+
+--shouldn't that just be a sum?  sum of the total_earnings.
+
+USE top_earners;
+SELECT SUM(months * salary) AS max_total_earnings
+	FROM employee;
+
+--total_earnings isn't a column.
+		
+--Ok, I solved that. 
+--That was quite an issue there.
+--using the AS as an actual column
+--when it is an alias.
+--aliases only exist for the duration of that query.
+
+--ok, I have done part 2.
+
+--I will now move on to part 3.
+
+--  part 3. total number of employees who have maximum total earnings.
+
+--ok, I am getting tired.
+
+--I will now investigate the next step to solving part 3.
+
+--how do I run a max on total_earnings.
+
+--I will run the MAX on months x salry.
+
+USE top_earners;
+SELECT MAX(months * Salary) AS max_total_employee
+	FROM employee;
+
+--ok, I am very close.
+--I am very excited to continue.
+
+--really enjoyed remembering that AS doesn't make a column.  
+--or specifically, it only lasts the duration of the query it is used in.
