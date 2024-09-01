@@ -199,3 +199,63 @@ SELECT MAX(months * Salary) AS max_total_employee
 
 --really enjoyed remembering that AS doesn't make a column.  
 --or specifically, it only lasts the duration of the query it is used in.
+
+--09 01 2024
+--is this the best way or should I make a new file everyday I work on this problem
+--this is so that each attempt is clearer?
+
+--I may look around or do a google search
+--ok, I looked quickly and a best practice was to limit the amount of files.
+
+--on with the show
+
+--alright,
+
+--I believe that I am at part 3.
+
+--well, part 3 was two parts.
+
+--so this is officially part 4.
+
+--		part 1. total_earnings column.
+--		part 2. maximum total earnings for all employees
+--		part 3. max total earnings is run on all employees to get MAX function output
+--		part 4. the total number of employees who have part 3.
+
+--I believe that I will need to use the count function.
+--I will start by making the count function.
+--I might need to start with the subquery first?
+
+--I guess the subquery is already written.
+--it is part 3.
+
+--USE top_earners;
+--SELECT COUNT(MAX(months * Salary)) AS max_total_employee
+--	FROM employee;
+
+--Gosh, I got confused and had to solve the answer by trying to look at the select * from employee result set.
+--I was on the right path.
+--I think the lesson is to label columns as clearly as possible.
+
+--OK, I learned that I will not be able to use a subquery with what I had imagined.
+
+--I have to rewrite this.
+
+--My new approach to getting a count of 
+--so wait, can I pass columns aliases?
+--I doubt it.
+
+USE top_earners;
+SELECT max_total_employee
+	FROM employee
+SELECT MAX(months * Salary) AS max_total_employee
+	FROM employee;
+
+--ok, I leave with this new lesson learned.
+--I need to start citing the specific lines.
+
+--		Msg 130, Level 15, State 1, Line 233
+--		Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
+
+--current error.
+--I am super excited to keep working on this.
