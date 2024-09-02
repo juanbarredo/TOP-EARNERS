@@ -39,6 +39,10 @@
 
 --SELECT (months * salary), count
 
+USE top_earners;
+SELECT *
+	FROM employee;
+
 --I am running into bottle necks.
 --I need to address the points that I do not  understand as I seem them
 --make a note of them
@@ -245,11 +249,11 @@ SELECT MAX(months * Salary) AS max_total_employee
 --so wait, can I pass columns aliases?
 --I doubt it.
 
-USE top_earners;
-SELECT max_total_employee
-	FROM employee
-SELECT MAX(months * Salary) AS max_total_employee
-	FROM employee;
+--USE top_earners;
+--SELECT max_total_employee
+--	FROM employee
+--SELECT MAX(months * Salary) AS max_total_employee
+--	FROM employee;
 
 --ok, I leave with this new lesson learned.
 --I need to start citing the specific lines.
@@ -259,3 +263,76 @@ SELECT MAX(months * Salary) AS max_total_employee
 
 --current error.
 --I am super excited to keep working on this.
+
+--09 02 2024
+
+--I am starting to think that them saying 
+--"the maximum total earnings to be 
+--the maximum total earnings 
+--for any employee in the employee table"
+--is literally the MAX function on salary x months.
+
+--then, I now need to count how many have 
+--that maximum total earnings.
+
+--the use of max is ruining the legibility 
+--from my commom use of how I would word this
+
+--how would I word this?
+
+--write a query to find the total number of employee who have earned the most.
+--and we also want to know what every employee's ... this one is harder to write 
+--in my own words.
+
+--anyways,
+--let me move on to solving the last part.
+
+--now my stomach is flexing at the possibility of using GROUP BY()
+--I don't think ir is the right approach
+--becuase I would want to use COUNT() in the SELECT statement.
+--and I don't think I can use two agregate functions on the same select statement
+--so I do two but in a subquery
+--but a subquery is also not allowed.
+
+--so, I need to split the tasks.
+
+--count is separate from max.
+--can I do max in a different way?
+
+--is there a function that does this already?
+--I honeslty don't think so
+--and I have ran out of ideas.
+
+--so let me get back to separating
+
+USE top_earners;
+SELECT COUNT(months * salary)
+FROM employee;
+
+USE top_earners;
+SELECT DISTINCT(employee_id)
+FROM employee;
+
+--Stumped yet again.
+
+--I am unsure how I will be able to do what I think I need to do.
+
+--somehow COUNT(MAX(months * salary))
+
+--can't do that.
+
+--so, I need to do MAX(months * salary)) 
+--and then count the max.
+
+--can I just write a new column?
+--insert into.
+
+--that might be a way.
+
+--why can't I float (if I even think I know what that means) variables like in Python?
+--the best way I know right now is to create a new row or a new view.
+
+--can you do opeations on view?  I kinda doubt it.
+
+--either way, I am really excited to be able to calmly work on this problem
+--while at the same time documenting it.
