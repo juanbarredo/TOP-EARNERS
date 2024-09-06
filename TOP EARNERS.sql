@@ -305,13 +305,13 @@ SELECT MAX(months * Salary) AS max_total_employee
 
 --so let me get back to separating
 
-USE top_earners;
-SELECT COUNT(months * salary)
-FROM employee;
+--USE top_earners;
+---SELECT COUNT(months * salary)
+--FROM employee;
 
-USE top_earners;
-SELECT DISTINCT(employee_id)
-FROM employee;
+-- top_earners;
+--SELECT DISTINCT(employee_id)
+--FROM employee;
 
 --Stumped yet again.
 
@@ -336,3 +336,35 @@ FROM employee;
 
 --either way, I am really excited to be able to calmly work on this problem
 --while at the same time documenting it.
+
+--09 05 2024
+--no end in sight.
+
+--I am learning what kind of nested functions work.
+
+--apparently I can use HAVING Clause?
+
+--how would that look like?
+
+--it feels very alien at the moment to work in that direction.
+
+--So, why don't I pick up the subquery again but try something different
+
+USE top_earners; 
+--SELECT COUNT(max_total_earnings)
+--	FROM employee
+--	WHERE max_total_earnings IN (
+SELECT MAX(months * salary) AS max_total_earnings
+	FROM employee; --subquery processes the total_earnings
+
+--Ok, right now I feel is a turning point.
+--How can I pass variables or make new variables.
+--variables being columns.
+--I think the INSERT INTO will work.
+
+--I think that's literally what it is for.
+--unless I can't solve it that way.
+--But it is the clearest way to get rid of nesting.
+
+--can I do that now?
+--what I could do now is to find the page number to build into next time.  Probably, Sunday.
