@@ -350,12 +350,12 @@ SELECT MAX(months * Salary) AS max_total_employee
 
 --So, why don't I pick up the subquery again but try something different
 
-USE top_earners; 
+--USE top_earners; 
 --SELECT COUNT(max_total_earnings)
 --	FROM employee
 --	WHERE max_total_earnings IN (
-SELECT MAX(months * salary) AS max_total_earnings
-	FROM employee; --subquery processes the total_earnings
+--SELECT MAX(months * salary) AS max_total_earnings
+--	FROM employee; --subquery processes the total_earnings
 
 --Ok, right now I feel is a turning point.
 --How can I pass variables or make new variables.
@@ -368,3 +368,62 @@ SELECT MAX(months * salary) AS max_total_earnings
 
 --can I do that now?
 --what I could do now is to find the page number to build into next time.  Probably, Sunday.
+
+--09 08 2024
+--ok, today I am going to attempt to use the INSERT INTO statement
+--to solve this problem.
+
+--I can't seem to know how to float or pass variables in SQL.
+--I think the main problem is that this isn't Python.
+
+--But I guess passing variables when they are whole columns
+--can get overwhelming.
+
+--So, then just adding the desired column (months * salary)
+--as a new column to the employees table.
+--might just solve that issue
+--then all I would need to so is to run a max but wouldn't that leave
+-- in the same issue?
+
+--I imagine that I would just make a new column of that.
+--then count it.
+
+--There has to be an easier way but this is what I have now.
+
+--USE top_earners;
+--INSERT INTO employee (employee_id, name, months, salary, monthsxsalary)
+
+--ok, realized that first I need to ALTER TABLE and add the column 'monthsxsalary'
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary INT NULL;
+
+--INSERT INTO employee (monthsxsalary)
+--	SELECT months* salary 
+--		FROM employee;
+
+USE top_earners;
+SELECT * 
+	FROM employee;
+
+--"Msg 515, Level 16, State 2, Line 402
+--Cannot insert the value NULL into column 'employee_id', 
+--table 'top_earners.dbo.employee'; 
+--column does not allow nulls. INSERT fails.
+--The statement has been terminated."
+
+--I am very confused as to the new error.
+--It seems that for whatever reason
+--the 'employee_is' is needed?
+
+--So, I may need to delete the row
+--'monthsxsalary'
+--and re-alter it but the next time
+--add the row as NOT NULL?
+
+--At the very least I have moved in a new direction
+--to solve this problem.
+
+--I am getting very frustrated with how this is going
+--How else could this be solved?
