@@ -415,7 +415,7 @@ SELECT *
 
 --I am very confused as to the new error.
 --It seems that for whatever reason
---the 'employee_is' is needed?
+--the 'employee_id' is needed?
 
 --So, I may need to delete the row
 --'monthsxsalary'
@@ -427,3 +427,77 @@ SELECT *
 
 --I am getting very frustrated with how this is going
 --How else could this be solved?
+
+--09 10 2024
+--ok, I believe I may have a solution.
+--I believe that I can just not include 'employee_id'.
+
+--It isn't needed after all.
+--and it makes the operation more complex.
+
+--USE top_earners;
+--INSERT INTO employee (monthsxsalary)
+--	SELECT months* salary 
+--		FROM employee;
+
+--ok, I was already trying this and it failed.
+--I need to change the monthxsalary to be NOT NULL.
+
+--ok, let me look up how to delete a column.
+
+--USE top_earners;
+--ALTER TABLE employee DROP COLUMN monthsxsalary;
+--GO
+
+--It worked!
+--I got rid of the column monthsxsalary NULL used in lines 448 - 450
+--for some reason the GO made it work.
+
+--I may need to look into GO.
+
+--Either way,
+--let me now try to insert the statement again from lines 398 to 404 I believe.
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary INT NOT NULL; --adding NOT to the NULL this time.
+--GO
+
+--INSERT INTO employee (monthsxsalary)
+--	SELECT months* salary 
+--		FROM employee;
+
+--DANG.
+--I am getting a completely new and very complex error message.
+--Msg 4901, Level 16, State 1, Line 462
+--ALTER TABLE only allows columns to be added that can contain nulls,
+--or have a DEFAULT definition specified,
+--or the column being added is an identity or timestamp column,
+--or alternatively if none of the previous conditions are satisfied the table must be empty to allow addition of this column
+--Column 'monthsxsalary' cannot be added to non-empty table 'employee' because it does not satisfy these conditions.
+
+--I am stumped again.
+--maybe adding a column won't do?
+
+--ok, let me look more into adding a column and the rules.
+--
+--makes me look at the previous message so differently.
+
+--could the problem then be.
+--the data I am inserting into?
+
+--are any of those values being shown as NULL when they are not?
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary INT NOT NULL;
+
+--I came up with the idea that maybe I don't need the NULL or NOT NULL 
+--at the end.
+
+--I was looking at examples and I saw that they didn't include them.
+
+--why don't I need NULL or NOT NULL?
+
+--weird.
+--something to look into!
