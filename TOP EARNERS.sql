@@ -501,3 +501,55 @@ SELECT *
 
 --weird.
 --something to look into!
+
+--09 12 2024
+--ok, lets see if the last thing I thought about might work
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary INT;
+
+--ok, so not putting in NULL or NOT NULL  defaults to NULL.
+
+--at this point I am completely lost in the details.
+
+--I think I need to look at the INSERT INTO closer.
+
+--INSERT INTO employee (employee_id, name, months, mon)
+--	SELECT months* salary 
+--		FROM employee;
+
+--that might be a problem in using insert into.
+--I might be trying to insert into the same table.
+--so the error occurs because of that.
+--I need to make a new table.
+
+--Ok, next step.
+--make a new table.
+
+--USE top_earners;
+--CREATE TABLE employees_monthxsalary 
+--	(employee_id INTEGER NOT NULL,
+--	name CHAR(100) NULL,
+--	months INTEGER NULL,
+--	salary INTEGER NULL,
+--	monthsxsalary INTEGER NULL);
+
+--INSERT INTO employees_monthxsalary (employee_id, name, months, salary, monthsxsalary)
+--	SELECT employee_id, name, months, months*salary
+--	FROM employee;
+
+--dang, time is up already.
+
+--I am stumped.
+--I am unsure how to multiply two rows and insert the result set into a different row.
+--I can't believe how simple yet complicated this is.
+
+--what do I need to search fro next?
+--I am also starting to get the feel that I might need a new file.
+--specifically since I am coming up with a new table.
+
+--However, I might now need a new table.
+--I might just need to learn 
+--how to insert the product of two rows into one.
+--that is the next step.
