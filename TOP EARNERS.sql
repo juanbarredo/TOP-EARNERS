@@ -403,9 +403,9 @@ SELECT MAX(months * Salary) AS max_total_employee
 --	SELECT months* salary 
 --		FROM employee;
 
-USE top_earners;
-SELECT * 
-	FROM employee;
+--USE top_earners;
+--SELECT * 
+--	FROM employee;
 
 --"Msg 515, Level 16, State 2, Line 402
 --Cannot insert the value NULL into column 'employee_id', 
@@ -553,3 +553,51 @@ SELECT *
 --I might just need to learn 
 --how to insert the product of two rows into one.
 --that is the next step.
+
+-----------------------09 15 2024
+
+--ok,
+--I may have found something.
+
+--learn.microsoft.com/en-us/sql/t-sql/statements/insert-transact-sql?view=sql-server-ver16
+--I typed out the link above so there may be errors.
+
+--eitherway,
+
+--an example using AdventureWroks2022 is shown.
+--I am familiar with that database because we used extensively during my BS in Data Analytics
+--from Miami Dade College.
+
+--I slowly worked through reading every line in the example and spotted a possibility.
+
+--"NewCostRate AS CostRate * 1.5,"
+
+--There is a glympse of what I need in line 573.
+--this may solve my problem.  
+--a problem which is hard to describe but 
+--COUNT(MAX(months * salary)))
+--is the best way to describe it.
+
+--I am starting to think if I should start a new file?
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary AS months*salary;
+
+--SELECT monthsxsalary AS months*1.5 
+--		FROM employee;
+
+USE top_earners;
+SELECT *
+	FROM employee;
+
+--got it, amazing.
+--I am one step closer.
+--ok, I think the main thing I learned
+--is to continue to work on these problems
+--as carefully as possible.
+--each step can take a variable amount of time.
+
+--defenitely have to look at examples as well.
+
+
