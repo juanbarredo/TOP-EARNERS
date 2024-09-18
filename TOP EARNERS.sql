@@ -625,9 +625,9 @@ SELECT *
 
 --let me build it.
 
-USE top_earners;
-SELECT MAX(monthsxsalary)
-	FROM employee
+--USE top_earners;
+--SELECT MAX(monthsxsalary)
+--	FROM employee
 
 --so I am lost.
 --what is the next step?
@@ -648,3 +648,32 @@ SELECT MAX(monthsxsalary)
 --how can that be done?
 --group by?
 --no.
+
+-----------------------09 18 2024
+
+--ok,
+--I have figured out that I may need to do the subquery as
+--i can't explain,
+--I want to just get to writting the query.
+
+USE top_earners;
+--What I am going to do right now is to just print out a result set with all the values that correspond to 
+--MAX(monthsxsalary).
+SELECT COUNT(monthsxsalary)
+	FROM employee
+		WHERE monthsxsalary IN (
+SELECT MAX(monthsxsalary)
+	FROM employee);
+
+--sorry, I skipped a step.
+USE top_earners;
+SELECT monthsxsalary
+	FROM employee
+		WHERE monthsxsalary IN (
+SELECT MAX(monthsxsalary)
+	FROM employee);
+
+--this is such an amazing celebration!
+--I am very very happy.
+
+
