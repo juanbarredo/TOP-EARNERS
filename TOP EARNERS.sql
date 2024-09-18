@@ -39,9 +39,9 @@
 
 --SELECT (months * salary), count
 
-USE top_earners;
-SELECT *
-	FROM employee;
+--USE top_earners;
+--SELECT *
+--	FROM employee;
 
 --I am running into bottle necks.
 --I need to address the points that I do not  understand as I seem them
@@ -89,9 +89,9 @@ SELECT *
 
 --I will test that.
 
-USE top_earners;
-SELECT name, months * salary AS total_earnings
-	FROM employee;
+--USE top_earners;
+--SELECT name, months * salary AS total_earnings
+--	FROM employee;
 --It has been amazing getting the current result set.
 
 --Ok, now.  What else does the question want?
@@ -168,9 +168,9 @@ SELECT name, months * salary AS total_earnings
 
 --shouldn't that just be a sum?  sum of the total_earnings.
 
-USE top_earners;
-SELECT SUM(months * salary) AS max_total_earnings
-	FROM employee;
+--USE top_earners;
+--SELECT SUM(months * salary) AS max_total_earnings
+--	FROM employee;
 
 --total_earnings isn't a column.
 		
@@ -194,9 +194,9 @@ SELECT SUM(months * salary) AS max_total_earnings
 
 --I will run the MAX on months x salry.
 
-USE top_earners;
-SELECT MAX(months * Salary) AS max_total_employee
-	FROM employee;
+--USE top_earners;
+--SELECT MAX(months * Salary) AS max_total_employee
+--	FROM employee;
 
 --ok, I am very close.
 --I am very excited to continue.
@@ -600,4 +600,51 @@ SELECT *
 
 --defenitely have to look at examples as well.
 
+----------------09 17 2024
 
+--ok,
+--so,
+--now what is the next step?
+
+--now, I believe I have to find the "maximum total earnings for all employees"
+--and then, "the total number of employees who have maximum total earning.
+
+--I need to find MAX of monthsxsalary.
+
+--USE top_earners;
+--SELECT MAX(monthsxsalary)
+--	FROM employee;
+
+--ok, got the MAX with the new configuration.
+--next, I need to find the COUNT of employees who have
+--maximum total earnings.
+
+--what can I do?
+
+--I think here finally is time for subquery.
+
+--let me build it.
+
+USE top_earners;
+SELECT MAX(monthsxsalary)
+	FROM employee
+
+--so I am lost.
+--what is the next step?
+--yeah, I think I am mistaking how 
+--subqueries work.
+
+--I think I would need to make the MAX(monthsxsalary) into its own
+--field again like I did with monthsxsalary.
+
+--let me count 
+
+--I think then the MAX function might now be right.
+--because it passes one value.
+--and I am trying to COUNT.
+--answer is more than one.
+
+--so I need to filter the monthsxsalary
+--how can that be done?
+--group by?
+--no.
