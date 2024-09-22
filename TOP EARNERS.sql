@@ -587,9 +587,9 @@
 --SELECT monthsxsalary AS months*1.5 
 --		FROM employee;
 
-USE top_earners;
-SELECT *
-	FROM employee;
+--USE top_earners;
+--SELECT *
+--	FROM employee;
 
 --got it, amazing.
 --I am one step closer.
@@ -656,24 +656,120 @@ SELECT *
 --i can't explain,
 --I want to just get to writting the query.
 
-USE top_earners;
+--USE top_earners;
 --What I am going to do right now is to just print out a result set with all the values that correspond to 
 --MAX(monthsxsalary).
-SELECT COUNT(monthsxsalary)
-	FROM employee
-		WHERE monthsxsalary IN (
-SELECT MAX(monthsxsalary)
-	FROM employee);
+--SELECT COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN (
+--SELECT MAX(monthsxsalary)
+--	FROM employee);
 
 --sorry, I skipped a step.
-USE top_earners;
-SELECT monthsxsalary
-	FROM employee
-		WHERE monthsxsalary IN (
-SELECT MAX(monthsxsalary)
-	FROM employee);
+--USE top_earners;
+--SELECT monthsxsalary
+--	FROM employee
+--		WHERE monthsxsalary IN (
+--SELECT MAX(monthsxsalary)
+--	FROM employee);
 
 --this is such an amazing celebration!
 --I am very very happy.
 
+--------------------09 22 2024
 
+--ok, apparently this past friday
+--we almost went to nuclear war with 
+--Russia
+
+--ok,
+--now I need to clean up the count.
+
+--I will need to copy/paste
+
+--USE top_earners;
+--SELECT COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN (
+--SELECT MAX(monthsxsalary)
+--	FROM employee);
+
+--ok, 
+--I need to add the part of the query that gives me
+--"the maximum total earnings for all employees"
+
+--can I mix MAX(monsthsxsalary) and COUNT(monthsxsalary) 
+--in the same SELECT statement?
+
+--let's see.
+
+--USE top_earners;
+--SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+--	FROM employee;
+
+--really funny that I wrote the query in lines 706 - 708
+--like that.
+
+--let me try again
+
+--because I need to in the query pass the correct result set
+--to the SELECT statement.
+
+--USE top_earners;
+--SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN
+--		(SELECT MAX(monthsxsalary)
+--			FROM employee);
+
+--ok, 
+--now I need to add the first part of the two part query.
+--the INSERT INTO.
+
+--USE top_earners;
+--INSERT INTO employee 
+--SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN
+--		(SELECT MAX(monthsxsalary)
+--			FROM employee);
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary AS months*salary;
+
+--INSERT INTO employee 
+--SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN
+--		(SELECT MAX(monthsxsalary)
+--			FROM employee);
+
+--USE top_earners;
+--ALTER TABLE employee DROP COLUMN monthsxsalary;
+
+--USE top_earners;
+--SELECT *
+--	FROM employee;
+
+USE top_earners;
+ALTER TABLE employee
+ADD monthsxsalary AS months*salary;
+
+INSERT INTO employee 
+SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+	FROM employee
+		WHERE monthsxsalary IN
+		(SELECT MAX(monthsxsalary)
+			FROM employee);
+
+--ok,
+--got some errors that drained me
+--but I am very close to solving this
+
+--might be tomorrow or the next time
+--I am surprised at how long it takes me to get warmed up
+--then to get tired a few minutes later.
+
+--I need to increase my stamina
+--the only way is to write more code.
