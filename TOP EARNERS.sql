@@ -752,16 +752,16 @@
 --SELECT *
 --	FROM employee;
 
-USE top_earners;
-ALTER TABLE employee
-ADD monthsxsalary AS months*salary;
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary AS months*salary;
 
-INSERT INTO employee 
-SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
-	FROM employee
-		WHERE monthsxsalary IN
-		(SELECT MAX(monthsxsalary)
-			FROM employee);
+--INSERT INTO employee 
+--SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN
+--		(SELECT MAX(monthsxsalary)
+--			FROM employee);
 
 --ok,
 --got some errors that drained me
@@ -773,3 +773,56 @@ SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
 
 --I need to increase my stamina
 --the only way is to write more code.
+
+---------------------09 24 2024
+--
+--I am realizing that I haven't been keeping up with my own style guide.
+--should I go in and fix it?
+--maybe later.
+
+--USE top_earners;
+--ALTER TABLE employee
+--ADD monthsxsalary AS months*salary;
+--GO --I tried GO again.  it does something interesting.
+--INSERT INTO employee  
+--SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+--	FROM employee
+--		WHERE monthsxsalary IN
+--		(SELECT MAX(monthsxsalary)
+--			FROM employee);
+
+--USE top_earners;
+--SELECT *
+--	FROM employee;
+
+--USE top_earners;
+--ALTER TABLE employee DROP COLUMN monthsxsalary;
+
+--a werid thing is happening.
+--I think that ALTER TABLE and SELECT statements are run differently.
+
+--either way,
+
+USE top_earners;
+ALTER TABLE employee
+ADD monthsxsalary AS months*salary;
+GO
+SELECT MAX(monthsxsalary), COUNT(monthsxsalary)
+	FROM employee
+		WHERE monthsxsalary IN
+		(SELECT MAX(monthsxsalary)
+			FROM employee);
+
+--So, I am unsure but what the heck does GO do?
+--it made my code run is what it did.
+--at this point in time I see it as the Black and Gold Ranger
+--from Mighty Morphin Power Rangers.
+--Yeah.
+
+--Amazing
+--I got it right!
+
+--ok, I need to work on my style next.
+--I think I aged like 1200 years to solve this query.
+
+--I am super happy
